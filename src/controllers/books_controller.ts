@@ -7,8 +7,8 @@ export const getBooks = async (req: Request, res: Response) => {
 };
 
 export const getBook = async (req: Request, res: Response) => {
-	const bookId = req.params.bookId;
-	const book = await bookService.getBook(Number(bookId));
+	const bookID = req.params.bookId;
+	const book = await bookService.getBook(Number(bookID));
 
 	if (book) {
 		res.json(book).status(200);
@@ -30,8 +30,16 @@ export const saveBook = async (req: Request, res: Response) => {
 // User Story 4 - Update Book By Id Solution
 export const updateBook = async (req: Request, res: Response) => {
 	const bookUpdateData = req.body;
-	const bookId = Number.parseInt(req.params.bookId);
+	const bookID = Number.parseInt(req.params.bookID);
 
-	const book = await bookService.updateBook(bookId, bookUpdateData);
+	const book = await bookService.updateBook(bookID, bookUpdateData);
 	res.status(204).json(book);
+};
+
+export const deleteBook = async (req: Request, res: Response) => {
+	const bookID = Number.parseInt(req.params.bookID);
+
+	await bookService.deleteBook(bookID);
+
+	res.status(204).end();
 };

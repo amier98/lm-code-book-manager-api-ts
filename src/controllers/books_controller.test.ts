@@ -3,6 +3,7 @@ import { app } from "../app";
 import { Book } from "../models/book";
 
 import * as bookService from "../services/books";
+import { response } from "express";
 jest.mock("../services/books");
 
 afterEach(() => {
@@ -11,13 +12,13 @@ afterEach(() => {
 
 const dummyBookData = [
 	{
-		bookId: 1,
+		bookID: 1,
 		title: "The Hobbit",
 		author: "J. R. R. Tolkien",
 		description: "Someone finds a nice piece of jewellery while on holiday.",
 	},
 	{
-		bookId: 2,
+		bookID: 2,
 		title: "The Shop Before Life",
 		author: "Neil Hughes",
 		description:
@@ -131,5 +132,13 @@ describe("POST /api/v1/books endpoint", () => {
 
 		// Assert
 		expect(res.statusCode).toEqual(400);
+	});
+});
+
+describe("DELETE /api/vi/books endpoint", () => {
+	test("status code success being 202 for deleting a book", async () => {
+		const res = await request(app).delete("/api/v1/books/2");
+
+		expect(res.statusCode).toEqual(204);
 	});
 });

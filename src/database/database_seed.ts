@@ -5,13 +5,13 @@ export const populateDummyData = async () => {
 	console.log("🍼 Populating database with dummy data");
 	await Book.sync({ force: true });
 	await Book.create({
-		bookId: 1,
+		bookID: 1,
 		title: "The Hobbit",
 		author: "J. R. R. Tolkien",
 		description: "Someone finds a nice piece of jewellery while on holiday.",
 	});
 	await Book.create({
-		bookId: 2,
+		bookID: 2,
 		title: "The Shop Before Life",
 		author: "Neil Hughes",
 		description:

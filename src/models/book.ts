@@ -11,7 +11,7 @@ export class Book extends Model<
 	InferAttributes<Book>,
 	InferCreationAttributes<Book>
 > {
-	declare bookId: CreationOptional<number>;
+	declare bookID: CreationOptional<number>;
 	declare title: string;
 	declare author: string;
 	declare description: string;
@@ -19,7 +19,7 @@ export class Book extends Model<
 
 Book.init(
 	{
-		bookId: {
+		bookID: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			primaryKey: true,
